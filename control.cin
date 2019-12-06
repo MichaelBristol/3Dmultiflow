@@ -1,0 +1,55 @@
+=======================Numeric parameters===============================
+channel 0.2 		     Keyword, Ubulk
+0.1 0.1 0.1		     	     dx,dy,dz
+1 1000000 0.72 0.6 0.0034    dens, RE, Pr, turb Schmidt, beta
+0.0 0.0 -0.6432              gx,gy,gz
+3                            convection_scheme(1=Exp.Euler,2=AdamsBashfort,3=RK2,4=RK3)
+3                            diffusion_scheme(1=Imp.Euler,2=CrankNicholson,3=ExplicitRungeKuttaDiff)
+3                            differencing(1=2ndCDS,2=4thCDS,3=WENO)
+2                            solver(1=sip,2=mg)
+2 2                          multigrid step (ngrid), multigrid iteration scheme(1=GSS,2=TDMA,3=RBGSS)
+30 2 1                       multigrid maximum iteration per time step,restriction iter, prolongation iter
+0.001 F 25 0.2               dt,variable(T)/fixed(F) dt,sweeps,safety_factor
+10000 F F 1000               itime_end,restart,reinitmean,n_out
+20 1.0E-5 5 5 5 20           niter,eps,nswp(1),nswp(2),nswp(3),nswp(4)
+=======================Flow boundary conditions=========================
+1			     	     West   Boundary Condition (1= Inflow; 12=1/7th power law; 7=prescribed inflow; 8=SEM)
+21                           East   Boundary Condition (2= Outflow, 2=NeumannBC(NBC) 21= ConvectiveBC(CBC))
+4                            South  Boundary Condition (3= Slip Condition)
+4                            North  Boundary Condition (4= No-Slip Condition)
+4                            Bottom Boundary Condition (5= Periodic Condition)
+3                            Top    Boundary Condition (61=smooth log law; 62=rough log law; 63=1/6th law; 64=1/7th law; 65=1/8th law)
+n 0.03			     Friction coefficient ('n':manning;'k':equivalent sand; only if bc=62)
+F 5000			     save inflow data (precursor sim.) ; number of inlets
+=======================Synthetic Eddy Method======================= 
+12					Velocity profile:1=Uniform; 12=1/7th PL 
+0.1					Turbulence intensity 
+1000					Number inlet profiles 
+200					Number of eddies
+=======================Modelling Options==========================
+F                            pressure forcing (make it true when we have periodic bc in x-direction)
+T 0.0 0.0 0.0                time_averaging,t_start_averaging1,t_start_averaging2,noise
+T 2                          SGS-model,1=Smagorinsky,2=WALE,3=OneEqnModel,4=k-eps model (RANS)  
+2 2                          LMR (1=old ghost cell approach, 2=new ghost cell approach),normal ghost velocity interpolation(1=2nd-order,2=4th-order)
+T F F                        LIMB,LENERGY,LROUGH
+F 1 F				     LPT,OpenMP threads,LSCALAR
+2                            pl_ex (# of extra ghost planes. pl_ex=0 -> blocks have only 1 ghost layer)
+0.5  -0.5                    Th,Tc
+=======================Energy boundary conditions=======================
+7			     	     West   Temp Boundary Condition (5= Periodic)
+7                            East   Temp Boundary Condition (7= Adiabatic)
+7                            South  Temp Boundary Condition (8= Cold Surface)
+7                            North  Temp Boundary Condition (9= Hot Surface)
+7                            Bottom Temp Boundary Condition
+7                            Top    Temp Boundary Condition
+=======================Free surface parameters========================== 
+F F 3 0.001 0.02 22 0.65     L_LSM,reinit,ntime_reinit,reldif_LSM,length,accuracy (HJ_ENO=11,HJ_WENO=22)
+F				     LENDS
+F F                          L_LSMbase,L_LSMinit
+F F				     L_anim_phi,L_anim_grd
+1000.0 1.205 1.0E-6 1.5E-5   densl,densg,nul,nug
+0.0 0.0 -9.8                 gx,gy,gz
+0.00				     slope
+=======================Time series======================================
+0				     num of time series points
+0 10 10 10			     point #1
