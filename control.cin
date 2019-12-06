@@ -25,7 +25,6 @@ F 5000			     save inflow data (precursor sim.) ; number of inlets
 12					Velocity profile:1=Uniform; 12=1/7th PL 
 0.1					Turbulence intensity 
 1000					Number inlet profiles 
-200					Number of eddies
 =======================Modelling Options==========================
 F                            pressure forcing (make it true when we have periodic bc in x-direction)
 T 0.0 0.0 0.0                time_averaging,t_start_averaging1,t_start_averaging2,noise
