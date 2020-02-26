@@ -155,7 +155,7 @@
            do i=dom(ib)%isv,dom(ib)%iev
                do j=dom(ib)%jsv,dom(ib)%jev
 
-                 if(differencing.eq.3) then
+                 if(differencing.eq.1) then
                  vp12=0.5*(dom(ib)%v(i,j,k)+dom(ib)%v(i,j+1,k))
                  vm12=0.5*(dom(ib)%v(i,j,k)+dom(ib)%v(i,j-1,k))
                  dv2dy=(vp12**2-vm12**2)/dom(ib)%dy
@@ -277,7 +277,7 @@
            do i=dom(ib)%isw,dom(ib)%iew
                do j=dom(ib)%jsw,dom(ib)%jew
 
-                 if(differencing.eq.3) then
+                 if(differencing.eq.1) then
                  wp12=0.5*(dom(ib)%w(i,j,k)+dom(ib)%w(i,j,k+1))
                  wm12=0.5*(dom(ib)%w(i,j,k)+dom(ib)%w(i,j,k-1))
                  dw2dz=(wp12**2-wm12**2)/dom(ib)%dz
