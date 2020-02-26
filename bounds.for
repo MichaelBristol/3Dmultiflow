@@ -34,7 +34,7 @@
 !=== West ===> ..   4=wall  ..    1=Inflow	..	7=read inflow
 !..............................................................................
         if (dom(ib)%iprev.lt.0) then
-           if ((dom(ib)%bc_west.eq.4).or.(dom(ib)%bc_east.ge.61)) then
+           if ((dom(ib)%bc_west.eq.4).or.(dom(ib)%bc_west.ge.61)) then
               do k=ks-1,ke+1; do j=js-1,je+1
                  dom(ib)%u(is-1-ly,j,k)= 0.0	
               end do; end do
